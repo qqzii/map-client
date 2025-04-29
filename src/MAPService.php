@@ -20,7 +20,7 @@ final readonly class MAPService
      */
     public function getCustomers(array $queryParams = []): array
     {
-        $queryParamsString = $this->getQueryParamsString($queryParams);
+        $queryParamsString = get_query_params_string($queryParams);
         $endpoint = $queryParamsString ? "customers?{$queryParamsString}" : 'customers';
 
         return $this->getClient()->call(
@@ -35,7 +35,7 @@ final readonly class MAPService
      */
     public function getCustomer(string $customerId, array $queryParams = []): array
     {
-        $queryParamsString = $this->getQueryParamsString($queryParams);
+        $queryParamsString = get_query_params_string($queryParams);
         $endpoint = $queryParamsString ? "customers/{$customerId}?{$queryParamsString}" : "customers/{$customerId}";
 
         return $this->getClient()->call(
@@ -137,7 +137,7 @@ final readonly class MAPService
      */
     public function getSegments(array $queryParams = []): array
     {
-        $queryParamsString = $this->getQueryParamsString($queryParams);
+        $queryParamsString = get_query_params_string($queryParams);
         $endpoint = $queryParamsString ? "segments?{$queryParamsString}" : 'segments';
 
         return $this->getClient()->call(
@@ -152,7 +152,7 @@ final readonly class MAPService
      */
     public function getSegment(string $segmentId, array $queryParams = []): array
     {
-        $queryParamsString = $this->getQueryParamsString($queryParams);
+        $queryParamsString = get_query_params_string($queryParams);
         $endpoint = $queryParamsString ? "segments/{$segmentId}?{$queryParamsString}" : "segments/{$segmentId}";
 
         return $this->getClient()->call(
@@ -211,7 +211,7 @@ final readonly class MAPService
      */
     public function getTopics(array $queryParams = []): array
     {
-        $queryParamsString = $this->getQueryParamsString($queryParams);
+        $queryParamsString = get_query_params_string($queryParams);
         $endpoint = $queryParamsString ? "topics?{$queryParamsString}" : 'topics';
 
         return $this->getClient()->call(
@@ -226,7 +226,7 @@ final readonly class MAPService
      */
     public function getTopic(string $topicId, array $queryParams = []): array
     {
-        $queryParamsString = $this->getQueryParamsString($queryParams);
+        $queryParamsString = get_query_params_string($queryParams);
         $endpoint = $queryParamsString ? "topics/{$topicId}?{$queryParamsString}" : "topics/{$topicId}";
 
         return $this->getClient()->call(
@@ -256,7 +256,7 @@ final readonly class MAPService
      */
     public function getMessages(array $queryParams = []): array
     {
-        $queryParamsString = $this->getQueryParamsString($queryParams);
+        $queryParamsString = get_query_params_string($queryParams);
         $endpoint = $queryParamsString ? "messages?{$queryParamsString}" : 'messages';
 
         return $this->getClient()->call(
@@ -271,7 +271,7 @@ final readonly class MAPService
      */
     public function getMessage(string $messageId, array $queryParams = []): array
     {
-        $queryParamsString = $this->getQueryParamsString($queryParams);
+        $queryParamsString = get_query_params_string($queryParams);
         $endpoint = $queryParamsString ? "messages/{$messageId}?{$queryParamsString}" : "messages/{$messageId}";
 
         return $this->getClient()->call(
@@ -313,10 +313,5 @@ final readonly class MAPService
     private function getClient(): MAPClient
     {
         return $this->mapClient;
-    }
-
-    private function getQueryParamsString(array $params = []): string
-    {
-        return count($params) ? http_build_query($params) : '';
     }
 }
