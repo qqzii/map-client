@@ -9,9 +9,9 @@ final readonly class MAPService
 {
     private MAPClient $mapClient;
 
-    public function __construct()
+    public function __construct(array $mapClientConfig)
     {
-        $this->mapClient = MAPClient::create();
+        $this->mapClient = MAPClient::create($mapClientConfig);
     }
 
     /**

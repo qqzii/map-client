@@ -20,17 +20,15 @@ final class MAPClient
     private Client $client;
     private Logger $logger;
 
-    private function __construct()
+    private function __construct(array $mapClientConfig)
     {
-        $mapConfig = config('map');
-
-        $this->initClient($mapConfig);
-        $this->initLogger($mapConfig);
+        $this->initClient($mapClientConfig);
+        $this->initLogger($mapClientConfig);
     }
 
-    public static function create(): self
+    public static function create(array $mapClientConfig): self
     {
-        return new self();
+        return new self($mapClientConfig);
     }
 
     /**
